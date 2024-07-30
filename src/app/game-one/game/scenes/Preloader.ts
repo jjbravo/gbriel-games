@@ -21,8 +21,14 @@ export class Preloader extends Scene {
     preload() {
         this.load.image('background', 'assets/game-one/background.png');
         this.load.image('box', 'assets/game-one/box.png');
-
-        this.load.audio('theme','./sounds/theme.mp3');
+        this.load.image('clouds','assets/game-one/cloud.svg')
+        this.load.image('letterA','assets/game-one/a.png')
+        this.load.image('letterE','assets/game-one/e.png')
+        this.load.image('letterI','assets/game-one/i.png')
+        this.load.image('letterO','assets/game-one/o.png')
+        this.load.image('letterU','assets/game-one/u.png')
+        this.load.audio('theme-sound','assets/game-one/sounds/theme.mp3');
+        this.load.audio('coin-sound','assets/game-one/sounds/coin.mp3');
     }
 
     create() {

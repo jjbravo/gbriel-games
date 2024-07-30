@@ -14,7 +14,14 @@ const config: Phaser.Types.Core.GameConfig = {
         Boot,
         Preloader,
         MainGame
-    ]
+    ],
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0, x: 0 }, // Gravedad global, ajustable si se requiere
+            debug: false
+        }
+    },
 };
 
 const StartGame = (parent: string) => {
