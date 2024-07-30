@@ -1,19 +1,19 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { GameOne } from "./game/phaser-game-component";
+import { Vowels } from "./game/phaser-game-component";
 import { CommonModule } from '@angular/common';
 import { EventBus } from './game/EventBus';
 
 @Component({
-  selector: 'app-game-one',
+  selector: 'app-vowels',
   standalone: true,
-  imports: [CommonModule, GameOne],
-  templateUrl: './game-one.component.html',
-  styleUrl: './game-one.component.css'
+  imports: [CommonModule, Vowels],
+  templateUrl: './vowels.component.html',
+  styleUrl: './vowels.component.css'
 })
-export class GameOneComponent implements AfterViewInit{
+export class VowelsComponent implements AfterViewInit{
   public canMoveSprite = false;
 
-  @ViewChild(GameOne) phaserRef!: GameOne
+  @ViewChild(Vowels) phaserRef!: Vowels
   
 
   ngAfterViewInit(): void {

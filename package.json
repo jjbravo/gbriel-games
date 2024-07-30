@@ -1,18 +1,18 @@
 {
-    "name": "template-angular",
+    "name": "gbriel-games",
     "version": "1.0.0",
-    "description": "A Phaser 3 project template that demonstrates Angular communication.",
+    "description": "Project Video Games for childrens babys.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/phaserjs/template-angular.git"
+        "url": "git+https://github.com/jjbravo/gbriel-games.git"
     },
-    "author": "Phaser Studio <support@phaser.io> (https://phaser.io/)",
+    "author": "Yohon Jairo Bravo Castro",
     "license": "MIT",
     "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
     "bugs": {
-        "url": "https://github.com/phaserjs/template-angular/issues"
+        "url": "https://github.com/jjbravo/gbriel-games/issues"
     },
-    "homepage": "https://github.com/phaserjs/template-angular#readme",
+    "homepage": "https://github.com/jjbravo/gbriel-games#readme",
     "keywords": [
         "phaser",
         "phaser3",

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { GameOneComponent } from './game-one/game-one.component';
+import { VowelsComponent } from './vowels/vowels.component';
 import { PhaserGameComponent } from './phaser-game/phaser-game.component';
 
 export const routes: Routes = [
@@ -8,7 +8,7 @@ export const routes: Routes = [
         component: PhaserGameComponent
     },
     {
-        path: 'game-one',
-        component: GameOneComponent
+        path: 'game-vowels',
+        component: VowelsComponent
     }
 ];

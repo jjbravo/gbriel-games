@@ -7,7 +7,7 @@ export class Boot extends Scene {
     }
 
     preload() {
-        this.load.image('background', 'assets/game-one/background.png');
+        this.load.image('background', 'assets/vowels/background.png');
     }
 
     create() {

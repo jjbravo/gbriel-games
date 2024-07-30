@@ -4,11 +4,11 @@ import { EventBus } from "./EventBus";
 
 
 @Component({
-    selector: 'game-one',
+    selector: 'vowels',
     template: '<div id="game-container"></div>',
     standalone: true
 })
-export class GameOne implements OnInit {
+export class Vowels implements OnInit {
     scene: Phaser.Scene;
     game: Phaser.Game;
 
