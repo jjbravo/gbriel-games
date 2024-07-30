@@ -1,0 +1,53 @@
+/*#app {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+.spritePosition {
+    margin: 10px 0 0 10px;
+    font-size: 0.8em;
+}
+.main-container {
+    display:flex;
+    flex-direction: row;
+    .sidebar {
+        display: flex;
+        background-color: rgb(4, 124, 160);
+        width: 250px;
+        nav ul {
+            list-style: none;
+            li {
+                margin-bottom: 10px;
+               
+                a {
+                    display: flex;
+                    padding: 10px;
+                    background: #dae1e8;
+                    border-radius: 50px;
+                    width: 100%;
+                    text-decoration: none;
+                    color: #272424;
+                }
+                a:active {
+                    color: #181717;
+                }
+                a:hover {
+                    background: #8cbef0;
+                }
+            }  
+        }       
+    }
+    .body-content {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
