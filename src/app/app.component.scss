@@ -8,19 +8,20 @@
     flex-direction: row;
     .sidebar {
         display: flex;
+        flex-direction: column;
         background-color: rgb(4, 124, 160);
         width: 250px;
         nav ul {
             list-style: none;
             li {
                 margin-bottom: 10px;
-               
+                margin-left: -25px;
                 a {
                     display: flex;
                     padding: 10px;
                     background: #dae1e8;
                     border-radius: 50px;
-                    width: 100%;
+                    margin-right: 10px;
                     text-decoration: none;
                     color: #272424;
                 }
@@ -31,6 +32,25 @@
                     background: #8cbef0;
                 }
             }  
+        }
+        .sidebar-buttom-content {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            width: 200px;
+            align-items: center;
+            gap: 5px;
+            a {
+                text-decoration: none;
+                color: #e4e4e4;
+            }
+            a:active {
+                color: #e4e4e4;
+            }
+            a:visited {
+                color: #e4e4e4;
+            }
+            
         }       
     }
     .body-content {

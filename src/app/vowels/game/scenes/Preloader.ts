@@ -21,7 +21,7 @@ export class Preloader extends Scene {
     preload() {
         this.load.image('background', 'assets/vowels/background.png');
         this.load.image('box', 'assets/vowels/box.png');
-        this.load.image('clouds','assets/vowels/cloud.svg')
+        this.load.image('clouds','assets/vowels/cloud.png')
         this.load.image('star','assets/vowels/star.png')
         this.load.image('star_2','assets/vowels/star_2.png')
         this.load.image('letterA','assets/vowels/a.png')
