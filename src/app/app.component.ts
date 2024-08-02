@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { PhaserGame } from "../game/phaser-game.component";
+import { PhaserGame } from "./phaser-game/game/phaser-game.component";
 
 @Component({
     selector: 'app-root',
@@ -12,6 +12,7 @@ import { PhaserGame } from "../game/phaser-game.component";
 })
 export class AppComponent implements AfterViewInit
 {
+ public collapseSidebar = false;
 
     ngAfterViewInit(){
       console.warn("After View Angular component");

@@ -6,52 +6,87 @@
 .main-container {
     display:flex;
     flex-direction: row;
-    .sidebar {
+    .main-sidebar {
         display: flex;
-        flex-direction: column;
-        background-color: rgb(4, 124, 160);
-        width: 250px;
-        nav ul {
-            list-style: none;
-            li {
-                margin-bottom: 10px;
-                margin-left: -25px;
-                a {
-                    display: flex;
-                    padding: 10px;
-                    background: #dae1e8;
-                    border-radius: 50px;
-                    margin-right: 10px;
-                    text-decoration: none;
-                    color: #272424;
-                }
-                a:active {
-                    color: #181717;
-                }
-                a:hover {
-                    background: #8cbef0;
-                }
-            }  
-        }
-        .sidebar-buttom-content {
+        flex-direction: row;
+        position: absolute;
+        .button-collapse {
+            position: relative;
             display: flex;
-            flex-direction: column;
-            padding: 10px;
-            width: 200px;
-            align-items: center;
-            gap: 5px;
-            a {
-                text-decoration: none;
-                color: #e4e4e4;
-            }
-            a:active {
-                color: #e4e4e4;
-            }
-            a:visited {
-                color: #e4e4e4;
+            flex-direction: column;  
+            left: 0;
+            a{
+                padding: 5px;
+                background: #dae1e8;
+                border-radius: 0 25px 25px 0;
+                cursor: pointer;
+                border-right: solid 2px #616161;
+                border-top: solid 2px #616161;
+                border-bottom: solid 2px #616161;
+                img {
+                    width: 15px;
+                    height: 30px;
+                }
             }
             
-        }       
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(4, 124, 160);
+            width: 250px;
+            left: 0;
+            border-radius: 0 0 10px;
+            nav ul {
+                list-style: none;
+                li {
+                    margin-bottom: 10px;
+                    margin-left: -25px;
+                    a {
+                        display: flex;
+                        padding: 10px;
+                        background: #dae1e8;
+                        border-radius: 50px;
+                        margin-right: 10px;
+                        text-decoration: none;
+                        color: #272424;
+                    }
+                    a:active {
+                        color: #181717;
+                    }
+                    a:hover {
+                        background: #8cbef0;
+                    }
+                }  
+            }
+            .sidebar-buttom-content {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                width: 200px;
+                align-items: center;
+                gap: 5px;
+                a {
+                    text-decoration: none;
+                    color: #e4e4e4;
+                }
+                a:active {
+                    color: #e4e4e4;
+                }
+                a:visited {
+                    color: #e4e4e4;
+                }
+                
+            }       
+        }
+        .show-sidebar {
+            position: relative;
+            left: 0px;
+        }
+        .hidde-sidebar {
+            position: relative;
+            left: -250px;
+        }
     }
     .body-content {
         width: 100%;
@@ -61,5 +96,5 @@
         justify-content: center;
         align-items: center;
     }
-    
+       
 }

@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { PhaserGame } from "../../game/phaser-game.component";
-import { EventBus } from '../../game/EventBus';
+import { PhaserGame } from "./game/phaser-game.component";
+import { EventBus } from './game/EventBus';
 import { CommonModule } from '@angular/common';
-import { MainMenu } from '../../game/scenes/MainMenu';
+import { MainMenu } from './game/scenes/MainMenu';
 
 @Component({
   selector: 'app-phaser-game',

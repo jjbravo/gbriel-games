@@ -7,7 +7,7 @@ import { NextLevel } from "./scenes/NextLevel";
 
 const config: Phaser.Types.Core.GameConfig = {
     type: AUTO,
-    width: window.innerWidth - 210,
+    width: window.innerWidth,
     height: window.innerHeight,
     parent: 'game-container',
     backgroundColor: '#028af8',

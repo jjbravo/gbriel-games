@@ -1,15 +1,21 @@
 <main class="main-container" id="app">
-    <div class="sidebar">
-        <nav>
-            <ul>
-                <li><a routerLink="./phaser-game">Phaser Game</a></li>
-                <li><a routerLink="./game-vowels">Vocales</a></li>
-            </ul>
-        </nav>
-        <div class="sidebar-buttom-content">
-            <p>Yohon Jairo Bravo </p>
-            <a target="_blank" href="https://github.com/jjbravo/gbriel-games.git">https://github.com/jjbravo</a>
-            <a target="_blank" href="https://phaser.io/">phaser.io/</a>
+    <div class="main-sidebar">
+        <div class="sidebar show-sidebar" [ngClass]="{'hidde-sidebar':collapseSidebar}">
+            <nav>
+                <ul>
+                    <li><a routerLink="./game-vowels">Vocales</a></li>
+                    <li><a routerLink="./phaser-game">Phaser Game</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-buttom-content">
+                <p>Yohon Jairo Bravo </p>
+                <a target="_blank" href="https://github.com/jjbravo/gbriel-games.git">https://github.com/jjbravo</a>
+                <a target="_blank" href="https://phaser.io/">phaser.io/</a>
+            </div>
+           
+        </div>
+        <div class="button-collapse" [ngClass]="{'hidde-sidebar':collapseSidebar}">
+            <a (click)="collapseSidebar = !collapseSidebar"><img src="./assets/icons/right-arrow.png" alt="ico"></a>
         </div>
     </div>
     <div class="body-content">

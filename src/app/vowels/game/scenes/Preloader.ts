@@ -21,14 +21,21 @@ export class Preloader extends Scene {
     preload() {
         this.load.image('background', 'assets/vowels/background.png');
         this.load.image('box', 'assets/vowels/box.png');
-        this.load.image('clouds','assets/vowels/cloud.png')
-        this.load.image('star','assets/vowels/star.png')
-        this.load.image('star_2','assets/vowels/star_2.png')
-        this.load.image('letterA','assets/vowels/a.png')
-        this.load.image('letterE','assets/vowels/e.png')
-        this.load.image('letterI','assets/vowels/i.png')
-        this.load.image('letterO','assets/vowels/o.png')
-        this.load.image('letterU','assets/vowels/u.png')
+        this.load.image('clouds','assets/vowels/cloud.png');
+        this.load.image('star','assets/vowels/star.png');
+        this.load.image('star_2','assets/vowels/star_2.png');
+        this.load.image('letterA','assets/vowels/a.png');
+        this.load.image('letterE','assets/vowels/e.png');
+        this.load.image('letterI','assets/vowels/i.png');
+        this.load.image('letterO','assets/vowels/o.png');
+        this.load.image('letterU','assets/vowels/u.png');
+
+        this.load.image('letterA_M','assets/vowels/A.png');
+        this.load.image('letterE_M','assets/vowels/E.png');
+        this.load.image('letterI_M','assets/vowels/I.png');
+        this.load.image('letterO_M','assets/vowels/O.png');
+        this.load.image('letterU_M','assets/vowels/U.png');
+
         this.load.audio('theme-sound','assets/vowels/sounds/merx-market-song.mp3');
         this.load.audio('coin-sound','assets/vowels/sounds/coin.mp3');
         this.load.audio('a-sound','assets/vowels/sounds/a.mp3');
