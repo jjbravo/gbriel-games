@@ -100,7 +100,7 @@ export class NextLevelTwo extends Scene {
        this.boxOne.setCollideWorldBounds(true);
 
         // Definicion de colisiones
-        this.physics.add.collider(this.stars, this.boxOne, this.handlerCollisionStar, () => true, this);
+       this.physics.add.collider(this.stars, this.boxOne, this.handlerCollisionStar, () => true, this);
        this.physics.add.collider(this.letterAM, this.boxOne, this.handlerCollisionAM, () => true, this);
 
        this.physics.add.collider(this.letterEM, this.boxOne, this.handlerCollisionEM, () => true, this);
@@ -205,6 +205,10 @@ export class NextLevelTwo extends Scene {
         letter.setVelocityY(160);
         const randomX = Phaser.Math.Between(0, this.scale.width);
         letter.setPosition(randomX, 0);
+        if(this.collisionsCountA >= 5) {
+            this.letterEM.setVisible(true);
+            this.letterEM.setActive(true);
+        }
        
     }
 
@@ -215,6 +219,14 @@ export class NextLevelTwo extends Scene {
         letter.setVelocityY(150);
         const randomX = Phaser.Math.Between(0, this.scale.width);
         letter.setPosition(randomX, 0);
+
+        if(this.collisionsCountE >= 5) {
+            this.letterAM.setVisible(false);
+            this.letterAM.setActive(false);
+
+            this.letterIM.setVisible(true);
+            this.letterIM.setActive(true);
+        }
                 
     }
 
@@ -225,6 +237,14 @@ export class NextLevelTwo extends Scene {
         letter.setVelocityY(80);
         const randomX = Phaser.Math.Between(0, this.scale.width);
         letter.setPosition(randomX, 0);  
+
+        if(this.collisionsCountI >= 5) {
+            this.letterEM.setVisible(false);
+            this.letterEM.setActive(false);
+            
+            this.letterOM.setVisible(true);
+            this.letterOM.setActive(true);
+        }
     }
 
     private handlerCollisionOM(letter: any) {
@@ -234,6 +254,13 @@ export class NextLevelTwo extends Scene {
         letter.setVelocityY(150);
         const randomX = Phaser.Math.Between(0, this.scale.width);
         letter.setPosition(randomX, 0);
+        if(this.collisionsCountO >= 5) {
+            this.letterIM.setVisible(false);
+            this.letterIM.setActive(false);
+            
+            this.letterUM.setVisible(true);
+            this.letterUM.setActive(true);
+        }
     }
 
     private handlerCollisionUM(letter: any) {
@@ -243,6 +270,11 @@ export class NextLevelTwo extends Scene {
         letter.setVelocityY(120);
         const randomX = Phaser.Math.Between(0, this.scale.width);
         letter.setPosition(randomX, 0);
+
+        if(this.collisionsCountU >= 5) {
+           // this.sound.stopAll();
+           console.log("Has Ganado...")
+        }
     }
 
     private handlerCollisionStar(box: any, star: any, ) {
@@ -297,25 +329,13 @@ export class NextLevelTwo extends Scene {
         let star = this.stars.getFirstDead(true, Phaser.Math.Between(0, this.scale.width), 0, 'star');
 
         if (star) {
-
-            //  ... which you can then act upon. Here we create a Phaser Tween to fade the star sprite in and out.
-            //  You could, of course, do this from within the Phaser Scene code, but this is just an example
-            //  showing that Phaser objects and systems can be acted upon from outside of Phaser itself.
-            this.add.tween({
-                targets: star,
-                duration: 500 + Math.random() * 1000,
-                alpha: 0,
-                yoyo: true,
-                repeat: -1
-            });
-
             star.setActive(true);
             star.setVisible(true);
             star.setCollideWorldBounds(true);
             star.setBounce(0.5);
-            star.setOrigin(0.5, 0.5); // Establece el punto de anclaje de la estrella en su centro
-            star.setVelocityY(100); // Ajusta el valor para cambiar la velocidad de caída
-            star.angle = 0; // Reinicia el ángulo de rotación
+            star.setOrigin(0.5, 0.5); 
+            star.setVelocityY(100); 
+            star.angle = 0;
         }
     }
 }
