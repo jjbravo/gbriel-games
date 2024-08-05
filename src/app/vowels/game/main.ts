@@ -2,7 +2,7 @@ import { AUTO, Game } from "phaser";
 import { Boot } from "./scenes/Boot";
 import { Preloader } from "./scenes/Preloader";
 import { MainGame } from "./scenes/MainGame";
-import { NextLevel } from "./scenes/NextLevel";
+import { NextLevelTwo } from "./scenes/NextLevelTwo";
 
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -15,7 +15,7 @@ const config: Phaser.Types.Core.GameConfig = {
         Boot,
         Preloader,
         MainGame,
-        NextLevel
+        NextLevelTwo
     ],
     physics: {
         default: 'arcade',
