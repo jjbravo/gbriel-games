@@ -293,8 +293,9 @@ export class MainGame extends Scene {
         letter.setPosition(randomX, 0);
      
         if(this.collisionsCountU > 8) {
-            this.scene.start("NextLevel");
             this.sound.stopAll();
+            this.scene.start("NextLevelTwo");
+            
         }
         
     }
@@ -303,8 +304,9 @@ export class MainGame extends Scene {
        this.addCoinSound("coin-sound", 0.5);
        this.countStar +=1;
        this.countStarsText.setText(''+this.countStar);
-       this.scene.start("NextLevelTwo"); // Delete after
        this.sound.stopAll(); // Delete after
+       this.scene.start("NextLevelTwo"); // Delete after
+       
        if(this.countStar > 2 && this.collisionsCountA <= 10) {
         this.letterA.setVisible(true);
         this.letterA.setActive(true);
