@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { Vowels } from "./game/phaser-game-component";
-import { CommonModule } from '@angular/common';
+
 import { EventBus } from './game/EventBus';
 
 @Component({
     selector: 'app-vowels',
-    imports: [CommonModule, Vowels],
+    imports: [Vowels],
     templateUrl: './vowels.component.html',
     styleUrl: './vowels.component.css'
 })
