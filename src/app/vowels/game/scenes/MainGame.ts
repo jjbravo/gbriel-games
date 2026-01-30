@@ -114,7 +114,7 @@ export class MainGame extends Scene {
         this.cursors = this.input.keyboard?.createCursorKeys();
 
         //Cargar sonido de fondo
-        this.addSoundBackground();
+       // this.addSoundBackground();
 
         // Tiempo de espera para iniciar grupo de estrellas
         this.time.addEvent({
@@ -207,7 +207,7 @@ export class MainGame extends Scene {
     }
 
     // Precarga assets para alistarlos para la siguiente pantalla (escena)
-    preload() {
+    /*preload() {
         this.load.image('background', 'assets/vowels/background.png');
         this.load.image('box', 'assets/vowels/box.png');
         this.load.image('clouds','assets/vowels/cloud.svg');
@@ -227,7 +227,7 @@ export class MainGame extends Scene {
         this.load.audio('coin-sound','assets/vowels/sounds/coin.mp3');
         this.load.audio('coin-up-sound','assets/vowels/sounds/zapsplat_fantasy_magic_chime_ping_wand_fairy_godmother_014_38300.mp3');
     }
-
+*/
     private handlerCollisionA(letter: any) {
         this.addCoinSound('coin-up-sound', 0.2);
         this.addCoinSound('a-sound', 2);

@@ -310,12 +310,12 @@ export class NextLevelTwo extends Scene {
         this.sound.add("theme-sound");
         this.sound.play("theme-sound", {
             mute: false,
-            volume: 2,
-            rate: 1,
-            detune: 0,
-            seek: 0,
+            volume: 1,
+           // rate: 1,
+           // detune: 0,
+          //  seek: 0,
             loop: true,
-            delay: 0
+           // delay: 0
         });
     }
 
