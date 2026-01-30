@@ -5,13 +5,20 @@ export class BubbleGameScene extends Phaser.Scene
     private bubbles: Phaser.Physics.Arcade.Group | null = null;
     private score = 0;
     private scoreText: Phaser.GameObjects.Text | null = null;
+    private levelText: Phaser.GameObjects.Text | null = null;
     private handPoint: Phaser.GameObjects.Sprite | null = null;
     private popSound: Phaser.Sound.BaseSound | null = null;
     private isPaused = false;
     private pauseText: Phaser.GameObjects.Text | null = null;
     private spawnEvent: Phaser.Time.TimerEvent | null = null;
 
+    private currentLevel: number = 1;
+    private vowelsCount: number = 0;
+    private showUppercase: boolean = false;
+
     private colors = [0xff6666, 0x66ff66, 0x6666ff, 0xffff66, 0xff66ff, 0x66ffff, 0xffffff];
+    private vowels = ['a', 'e', 'i', 'o', 'u'];
+    private vowelSounds: Map<string, Phaser.Sound.BaseSound> = new Map();
 
     constructor()
     {
@@ -25,6 +32,15 @@ export class BubbleGameScene extends Phaser.Scene
         this.load.audio('pop', 'assets/vowels/sounds/coin.mp3');
         this.load.svg('balloon', 'assets/globo.svg');
         this.load.svg('pencil', 'assets/lapiz.svg');
+        this.load.image('star', 'assets/vowels/star.png');
+
+        // Load vowels lowercase and uppercase
+        this.vowels.forEach(v =>
+        {
+            this.load.image(v, `assets/vowels/${v}.png`);
+            this.load.image(v.toUpperCase(), `assets/vowels/${v.toUpperCase()}.png`);
+            this.load.audio(v + '_sound', `assets/vowels/sounds/${v}.mp3`);
+        });
     }
 
     public create()
@@ -38,11 +54,24 @@ export class BubbleGameScene extends Phaser.Scene
         this.bubbles = this.physics.add.group();
         this.popSound = this.sound.add('pop');
 
+        // Initialize vowel sounds
+        this.vowels.forEach(v =>
+        {
+            this.vowelSounds.set(v, this.sound.add(v + '_sound'));
+        });
+
         this.scoreText = this.add.text(20, 20, 'Burbujas: 0', {
             fontSize: '32px',
             color: '#ffffff',
             stroke: '#000000',
             strokeThickness: 6
+        });
+
+        this.levelText = this.add.text(20, 60, 'Nivel: 1 (Globos)', {
+            fontSize: '28px',
+            color: '#ffff00',
+            stroke: '#000000',
+            strokeThickness: 4
         });
 
         // Spawn bubbles more frequently
@@ -113,16 +142,42 @@ export class BubbleGameScene extends Phaser.Scene
         const x = Phaser.Math.Between(100, this.scale.width - 100);
         const y = this.scale.height + 100;
 
-        const color = Phaser.Utils.Array.GetRandom(this.colors);
-        const balloon = this.add.sprite(x, y, 'balloon');
-        balloon.setScale(scale);
-        balloon.setTint(color as number);
+        let spriteKey = 'balloon';
+        let isVowel = false;
+        let vowelKey = '';
 
-        this.bubbles.add(balloon);
+        if (this.currentLevel === 2)
+        {
+            isVowel = true;
+            vowelKey = Phaser.Utils.Array.GetRandom(this.vowels);
+            spriteKey = vowelKey;
 
-        const body = balloon.body as Phaser.Physics.Arcade.Body;
-        // Adjust circular hitbox for the balloon shape
-        body.setCircle(balloon.width * 0.4, balloon.width * 0.1, balloon.height * 0.05);
+            if (this.showUppercase && Phaser.Math.Between(0, 1) === 1)
+            {
+                spriteKey = vowelKey.toUpperCase();
+            }
+        }
+
+        const obj = this.add.sprite(x, y, spriteKey);
+        obj.setScale(scale);
+
+        if (!isVowel)
+        {
+            const color = Phaser.Utils.Array.GetRandom(this.colors);
+            obj.setTint(color as number);
+        }
+
+        // Store vowel key in data if it's a vowel
+        if (isVowel)
+        {
+            obj.setData('vowel', vowelKey);
+        }
+
+        this.bubbles.add(obj);
+
+        const body = obj.body as Phaser.Physics.Arcade.Body;
+        // Adjust circular hitbox
+        body.setCircle(obj.width * 0.4, obj.width * 0.1, obj.height * 0.05);
 
         const speed = Phaser.Math.Between(-250, -100) * (1 / scale);
         body.setVelocityY(speed);
@@ -131,32 +186,63 @@ export class BubbleGameScene extends Phaser.Scene
 
     private popBubble(bubble: Phaser.GameObjects.Sprite)
     {
-        // Play sound
-        if (this.popSound)
+        const vowelKey = bubble.getData('vowel');
+
+        if (vowelKey)
         {
-            this.popSound.play();
+            this.vowelSounds.get(vowelKey)?.play();
+            this.vowelsCount++;
+
+            if (this.vowelsCount === 20)
+            {
+                this.showUppercase = true;
+                this.levelText?.setText('Nivel: 2 (Vocales Mezcladas)');
+            }
+        } else
+        {
+            if (this.popSound) this.popSound.play();
         }
 
         const x = bubble.x;
         const y = bubble.y;
-        const color = bubble.tintTopLeft;
+        const color = bubble.isTinted ? bubble.tintTopLeft : 0xffffff;
 
         bubble.destroy();
         this.score++;
-        if (this.scoreText)
+
+        if (this.currentLevel === 1)
         {
-            this.scoreText.setText(`Burbujas: ${this.score}`);
+            if (this.scoreText)
+            {
+                this.scoreText.setText(`Burbujas: ${this.score}/50`);
+            }
+
+            if (this.score >= 50)
+            {
+                this.currentLevel = 2;
+                this.levelText?.setText('Nivel: 2 (Vocales Minúsculas)');
+                this.scoreText?.setText(`Puntos: ${this.score}`);
+
+                // Visual feedback for level up
+                this.cameras.main.flash(500, 255, 255, 0);
+            }
+        } else
+        {
+            if (this.scoreText)
+            {
+                this.scoreText.setText(`Puntos: ${this.score}`);
+            }
         }
 
-        // Add a "pop" effect with matching color
-        const particles = this.add.particles(x, y, 'flare', {
+        // Add a "pop" effect
+        const particles = this.add.particles(x, y, 'star', {
             speed: { min: -150, max: 150 },
             angle: { min: 0, max: 360 },
             scale: { start: 0.3, end: 0 },
             lifespan: 600,
             gravityY: 300,
             quantity: 10,
-            tint: color
+            tint: color as number
         });
 
         this.time.delayedCall(600, () => particles.destroy());
