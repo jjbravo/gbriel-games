@@ -4,11 +4,10 @@ import { CommonModule } from '@angular/common';
 import { EventBus } from './game/EventBus';
 
 @Component({
-  selector: 'app-vowels',
-  standalone: true,
-  imports: [CommonModule, Vowels],
-  templateUrl: './vowels.component.html',
-  styleUrl: './vowels.component.css'
+    selector: 'app-vowels',
+    imports: [CommonModule, Vowels],
+    templateUrl: './vowels.component.html',
+    styleUrl: './vowels.component.css'
 })
 export class VowelsComponent implements AfterViewInit{
   public canMoveSprite = false;

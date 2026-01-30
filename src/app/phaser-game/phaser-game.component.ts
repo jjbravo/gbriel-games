@@ -5,11 +5,10 @@ import { CommonModule } from '@angular/common';
 import { MainMenu } from './game/scenes/MainMenu';
 
 @Component({
-  selector: 'app-phaser-game',
-  standalone: true,
-  imports: [PhaserGame, CommonModule],
-  templateUrl: './phaser-game.component.html',
-  styleUrl: './phaser-game.component.css'
+    selector: 'app-phaser-game',
+    imports: [PhaserGame, CommonModule],
+    templateUrl: './phaser-game.component.html',
+    styleUrl: './phaser-game.component.css'
 })
 export class PhaserGameComponent implements AfterViewInit
 {
